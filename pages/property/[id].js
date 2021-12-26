@@ -31,19 +31,16 @@ const PropertyDetails = ({
     {photos && <ImageScrollbar data={photos} />}
     <Box w="full" p="6">
       <Flex paddingTop="2" alignItems="center" justifyContent="space-between">
-        <Flex alignItems="center">
-          <Box paddingRight="3" color="green.400">
-            {isVerified && <GoVerified />}
-          </Box>
-
-          <Text fontWeight="bold" fontSize="lg">
-            AED {price}
-            {rentFrequency && `/${rentFrequency}`}
-          </Text>
-          <Spacer />
-          <Avatar size="sm" src={agency?.logo?.url}></Avatar>
-        </Flex>
+        <Box paddingRight="3" color="green.400">
+          {isVerified && <GoVerified />}
+        </Box>
+        <Text fontWeight="bold" fontSize="lg">
+          AED {price} {rentFrequency && `/${rentFrequency}`}
+        </Text>
+        <Spacer />
+        <Avatar size="sm" src={agency?.logo?.url}></Avatar>
       </Flex>
+
       <Flex
         alignItems="center"
         p="1"
@@ -82,7 +79,6 @@ const PropertyDetails = ({
       </Flex>
       <Flex
         justifyContent={"space-between"}
-        justifyContent={"space-between"}
         w="400px"
         borderBottom={"1px"}
         borderColor={"gray.100"}
@@ -108,22 +104,22 @@ const PropertyDetails = ({
 
     <Box>
       {amenities.length && (
-        <Text fontSize="2xl" fontmarginTop="5" fontWeight="black">
+        <Text fontSize="2xl" marginTop="5" fontWeight="black">
           Amenities
         </Text>
       )}
       <Flex flexWrap={"wrap"}>
         {amenities.map((item) =>
-          item.amenities.map((amenity) => (
+          item?.amenities?.map((amenity) => (
             <Text
+              key={amenity.text}
               fontWeight={"bold"}
               color="blue.400"
-              padding="2"
+              p="2"
               fontSize={"l"}
-              background={"gray.200"}
-              margin="1"
+              bg={"gray.200"}
+              m
               borderRadius={"5"}
-              key={amenity.text}
             >
               {amenity.text}
             </Text>
